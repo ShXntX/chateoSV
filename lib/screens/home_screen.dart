@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           ),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                     'Connect friends easily & quickly',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 65,
+                      fontSize: 55,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -43,14 +43,67 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset('assets/icons/facebook.png'),
-                      Image.asset('assets/icons/google.png'),
-                      Image.asset('assets/icons/apple.png'),
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.transparent, // o cualquier color de fondo
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          ), // borde blanco
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // esquinas redondeadas
+                        ),
+
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/icons/facebook.png'),
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.transparent, // o cualquier color de fondo
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          ), // borde blanco
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // esquinas redondeadas
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/icons/google.png'),
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.transparent, // o cualquier color de fondo
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
+                          ), // borde blanco
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // esquinas redondeadas
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/icons/apple.png'),
+                        ),
+                      ),
                     ],
                   ),
+                  SizedBox(),
                   Row(
                     children: const [
                       Expanded(
@@ -74,6 +127,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(width: 40),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

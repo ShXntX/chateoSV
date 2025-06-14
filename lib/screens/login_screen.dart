@@ -10,66 +10,157 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("")),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          spacing: 24,
-          children: [
-            const Text('Log in to Chatbox'),
-            const Text(
-              'Welcome back! Sign in using your social account or email to continue us',
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          // es un formulario
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: 24,
               children: [
-                Image.asset('assets/icons/facebook.png'),
-                Image.asset('assets/icons/google.png'),
-                Image.asset('assets/icons/apple.png'),
-              ],
-            ),
-            Row(
-              children: const [
-                Expanded(
-                  child: Divider(color: Color(0xFFCDD1D0), thickness: 0.5),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'OR',
-                    style: TextStyle(color: Colors.black, fontSize: 14),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Log in',
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Color.fromARGB(255, 117, 202, 171),
+                          decorationThickness: 4.0,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      const TextSpan(
+                        text: ' to Chatbox',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Expanded(
-                  child: Divider(color: Color(0xFFCDD1D0), thickness: 0.5),
+                Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text:
+                            'Welcome back! Sign in using your social account or email to continue us',
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent, // o cualquier color de fondo
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 2,
+                        ), // borde blanco
+                        borderRadius: BorderRadius.circular(
+                          100,
+                        ), // esquinas redondeadas
+                      ),
+
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Image.asset('assets/icons/facebook.png'),
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent, // o cualquier color de fondo
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 2,
+                        ), // borde blanco
+                        borderRadius: BorderRadius.circular(
+                          100,
+                        ), // esquinas redondeadas
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Image.asset('assets/icons/google.png'),
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Container(
+                      width: 55, // ancho en píxeles
+                      height: 55,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent, // o cualquier color de fondo
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 2,
+                        ), // borde blanco
+                        borderRadius: BorderRadius.circular(
+                          100,
+                        ), // esquinas redondeadas
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Image.asset('assets/icons/appleDark.png'),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: const [
+                    Expanded(
+                      child: Divider(color: Color(0xFFCDD1D0), thickness: 0.5),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        'OR',
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(color: Color(0xFFCDD1D0), thickness: 0.5),
+                    ),
+                  ],
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Your email',
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 117, 202, 171),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 117, 202, 171),
+                    ),
+                  ),
                 ),
               ],
             ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Your email',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Password',
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                onPressed: () {},
-                child: const Text('Log in'),
-              ),
-            ),
-          ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+
+        child: FilledButton(
+          onPressed: () {},
+          style: FilledButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 224, 224, 224),
+          ),
+          child: const Text(
+            'Log in',
+            style: TextStyle(color: Colors.black, fontSize: 14),
+          ),
         ),
       ),
     );

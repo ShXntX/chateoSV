@@ -10,53 +10,100 @@ class SingUpScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("")),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          spacing: 24,
-          children: [
-            const Text('Sign up with Email'),
-            const Text(
-              'Get chatting with friends and family today by signing up for our chat app!',
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Your name',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Your email',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Password',
-              ),
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Confirm Password',
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          //es un formulario
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: 24,
+              children: [
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      const TextSpan(
+                        text: 'Sign up with ',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'Email',
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Color.fromARGB(255, 117, 202, 171),
+                          decorationThickness: 4.0,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                onPressed: () {},
-                child: const Text('Create an account'),
-              ),
+                Text.rich(
+                  textAlign: TextAlign.center,
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text:
+                            'Get chatting with friends and family today by signing up for our chat app!',
+                      ),
+                    ],
+                  ),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Your name',
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 117, 202, 171),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Your email',
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 117, 202, 171),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Password',
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 117, 202, 171),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Confirm Password',
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 117, 202, 171),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+
+        child: FilledButton(
+          onPressed: () {},
+          style: FilledButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 224, 224, 224),
+          ),
+          child: const Text(
+            'Create account-uihut',
+            style: TextStyle(color: Colors.black, fontSize: 14),
+          ),
         ),
       ),
     );
