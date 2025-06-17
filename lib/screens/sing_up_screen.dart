@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SingUpScreen extends StatelessWidget {
   const SingUpScreen({super.key});
 
-  static const String routName = '/singUp';
+  //static const String routName = '/sign-up';
 
   @override
   Widget build(BuildContext context) {
@@ -55,36 +55,26 @@ class SingUpScreen extends StatelessWidget {
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Your name',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 202, 171),
-                    ),
                   ),
                 ),
                 TextFormField(
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Your email',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 202, 171),
-                    ),
                   ),
                 ),
                 TextFormField(
+                  textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 202, 171),
-                    ),
                   ),
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Confirm Password',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 202, 171),
-                    ),
                   ),
                 ),
               ],
@@ -97,13 +87,8 @@ class SingUpScreen extends StatelessWidget {
 
         child: FilledButton(
           onPressed: () {},
-          style: FilledButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 224, 224, 224),
-          ),
-          child: const Text(
-            'Create account-uihut',
-            style: TextStyle(color: Colors.black, fontSize: 14),
-          ),
+          style: FilledButton.styleFrom(),
+          child: const Text('Create account-uihut'),
         ),
       ),
     );

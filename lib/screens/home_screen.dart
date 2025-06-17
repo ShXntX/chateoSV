@@ -1,11 +1,10 @@
-import 'package:chateo_eela_2025/screens/login_screen.dart';
-import 'package:chateo_eela_2025/screens/sing_up_screen.dart';
+import 'package:chateo_eela_2025/widgets/app_navigator.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static const String routeName = "/";
+  //static const String routeName = "/";
 
   @override
   Widget build(BuildContext context) {
@@ -139,14 +138,16 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, SingUpScreen.routName);
+                        //Navigator.pushNamed(context, SingUpScreen.routName);
+                        Navigator.pushNamed(context, AppNavigator.signUp);
                       },
                       child: const Text('Sign up with mail'),
                     ),
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, LoginScreen.routName);
+                      //Navigator.pushNamed(context, LoginScreen.routName);
+                      Navigator.pushNamed(context, AppNavigator.login);
                     },
                     child: const Text(
                       'Existing account? Log in',

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
-  static const String routName = '/login';
+  //static const String routName = '/login';
 
   @override
   Widget build(BuildContext context) {
@@ -127,21 +127,22 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 TextFormField(
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Your email',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 202, 171),
-                    ),
                   ),
                 ),
                 TextFormField(
+                  textInputAction: TextInputAction.next,
+                  // estilo de teclado
+                  //para que no se vea lo que se escribe
+                  obscureText: true,
+                  //keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 117, 202, 171),
-                    ),
                   ),
                 ),
               ],
@@ -151,17 +152,7 @@ class LoginScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-
-        child: FilledButton(
-          onPressed: () {},
-          style: FilledButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 224, 224, 224),
-          ),
-          child: const Text(
-            'Log in',
-            style: TextStyle(color: Colors.black, fontSize: 14),
-          ),
-        ),
+        child: FilledButton(onPressed: () {}, child: const Text('Log in')),
       ),
     );
   }
