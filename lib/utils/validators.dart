@@ -16,5 +16,37 @@ class EmailValidator {
     //return null;
   }
 
-  //agregar validaion para la contraseña
+  //validador para contraseñas
+  static String? validatorPass(String? pass) {
+    if (pass == null || pass.isEmpty) {
+      return 'Ingrese un Mail Valido';
+    }
+
+    if (pass.length < 8) {
+      return 'La contrasenia debe tener almenos 8 caracteres';
+    }
+
+    if (!RegExp(r'[A-Z]').hasMatch(pass)) {
+      return 'La contrasenia debe tener almenos una mayuscula';
+    }
+
+    if (!RegExp(r'[a-z]').hasMatch(pass)) {
+      return 'La contrasenia debe tener almenos una minuscula';
+    }
+
+    if (!RegExp(r'[!@#\$&*~]').hasMatch(pass)) {
+      return 'La contrasenia debe tener almenos un caracter especial';
+    }
+
+    //contraseña valida
+    return null;
+  }
+
+  //valida que los campos coincidan
+  static String? validatorPassConfirm(String? passN, String passO) {
+    if (passN != passO) {
+      return 'Las contraseñas no coinciden';
+    }
+    return null;
+  }
 }

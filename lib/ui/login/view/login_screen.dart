@@ -9,11 +9,16 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //esta llave es para tener un validador del formulario
+    final formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(title: Text("")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
+          //esta llave es para tener un validador del formulario
+          key: formKey,
           // es un formulario
           child: SingleChildScrollView(
             child: Column(
@@ -135,8 +140,11 @@ class LoginScreen extends StatelessWidget {
                     border: UnderlineInputBorder(),
                     labelText: 'Your email',
                   ),
+                  //llamo a la funcion declarada en el otro archivo
+                  validator: EmailValidator.validatorEmail,
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
                   // estilo de teclado
                   //para que no se vea lo que se escribe
@@ -146,8 +154,9 @@ class LoginScreen extends StatelessWidget {
                     border: UnderlineInputBorder(),
                     labelText: 'Password',
                   ),
-                  //llamo a la funcion declarada en el otro archivo
-                  validator: EmailValidator.validatorEmail,
+
+                  //llamo al metodo que valida mi contraseña
+                  validator: EmailValidator.validatorPass,
                 ),
               ],
             ),
@@ -156,7 +165,12 @@ class LoginScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: FilledButton(onPressed: () {}, child: const Text('Log in')),
+        child: FilledButton(
+          onPressed: () {
+            formKey.currentState!.validate();
+          },
+          child: const Text('Log in'),
+        ),
       ),
     );
   }

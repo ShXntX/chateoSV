@@ -17,6 +17,9 @@ class SingUpScreen extends StatelessWidget {
     //pasar al cubir
     final cubit = context.read<SingUpCubit>();
 
+    //un cotrolador de textos para validar que un campo coincida con otro
+    final passOriginal = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(title: Text("")),
       body: Padding(
@@ -87,6 +90,8 @@ class SingUpScreen extends StatelessWidget {
                   onChanged: cubit.onEmailChanged,
                 ),
                 TextFormField(
+                  //agrego el controlador declarado arriba
+                  controller: passOriginal,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
@@ -94,8 +99,8 @@ class SingUpScreen extends StatelessWidget {
                   ),
                   //aqui llamo al cubit
                   onChanged: cubit.onPassChanged,
-                  //DEBER AGREGAR VALIDACION A LA CONTRASEÑA validator y
-                  //en el login poner la validacion del correo
+                  //valida un Pass valido
+                  validator: EmailValidator.validatorPass,
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -104,6 +109,11 @@ class SingUpScreen extends StatelessWidget {
                   ),
                   //aqui llamo al cubit
                   onChanged: cubit.onConfPassChanged,
+                  //esta validador se declaro de esta manera ya no recibe un parametro
+                  validator: (value) => EmailValidator.validatorPassConfirm(
+                    value,
+                    passOriginal.text,
+                  ),
                 ),
               ],
             ),
