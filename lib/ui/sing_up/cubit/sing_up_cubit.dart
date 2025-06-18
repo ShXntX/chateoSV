@@ -15,4 +15,12 @@ class SingUpCubit extends Cubit<SingUpState> {
   void onEmailChanged(String email) {
     print(email);
   }
+
+  void onPassChanged(String pass) {
+    print(pass);
+  }
+
+  void onConfPassChanged(String cpass) {
+    print(cpass);
+  }
 }
