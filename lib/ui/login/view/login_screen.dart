@@ -1,3 +1,5 @@
+import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
+import 'package:chateo_eela_2025/utils/validators.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -22,9 +24,9 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: 'Log in',
-                        style: const TextStyle(
+                        style: TextStyle(
                           decoration: TextDecoration.underline,
-                          decorationColor: Color.fromARGB(255, 117, 202, 171),
+                          decorationColor: AppColors.primary,
                           decorationThickness: 4.0,
                           fontSize: 18,
                           fontWeight: FontWeight.w900,
@@ -58,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.transparent, // o cualquier color de fondo
                         border: Border.all(
-                          color: Colors.black,
+                          color: AppColors.black,
                           width: 2,
                         ), // borde blanco
                         borderRadius: BorderRadius.circular(
@@ -76,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.transparent, // o cualquier color de fondo
                         border: Border.all(
-                          color: Colors.black,
+                          color: AppColors.black,
                           width: 2,
                         ), // borde blanco
                         borderRadius: BorderRadius.circular(
@@ -95,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.transparent, // o cualquier color de fondo
                         border: Border.all(
-                          color: Colors.black,
+                          color: AppColors.black,
                           width: 2,
                         ), // borde blanco
                         borderRadius: BorderRadius.circular(
@@ -110,9 +112,9 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  children: const [
+                  children: [
                     Expanded(
-                      child: Divider(color: Color(0xFFCDD1D0), thickness: 0.5),
+                      child: Divider(color: AppColors.grey, thickness: 0.5),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
@@ -122,7 +124,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Divider(color: Color(0xFFCDD1D0), thickness: 0.5),
+                      child: Divider(color: AppColors.grey, thickness: 0.5),
                     ),
                   ],
                 ),
@@ -144,6 +146,8 @@ class LoginScreen extends StatelessWidget {
                     border: UnderlineInputBorder(),
                     labelText: 'Password',
                   ),
+                  //llamo a la funcion declarada en el otro archivo
+                  validator: EmailValidator.validatorEmail,
                 ),
               ],
             ),

@@ -1,4 +1,4 @@
-import 'package:chateo_eela_2025/widgets/app_navigator.dart';
+import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
