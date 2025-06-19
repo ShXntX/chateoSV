@@ -17,6 +17,15 @@ class EmailValidator {
   }
 
   //validador para contraseñas
+  static String? validatorName(String? pass) {
+    if (pass == null || pass.isEmpty) {
+      return 'Ingrese un Nombre Valido';
+    }
+    //contraseña valida
+    return null;
+  }
+
+  //validador para contraseñas
   static String? validatorPass(String? pass) {
     if (pass == null || pass.isEmpty) {
       return 'Ingrese un Mail Valido';

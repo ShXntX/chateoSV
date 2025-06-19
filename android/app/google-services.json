@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "773659845874",
+    "project_id": "chateoeela",
+    "storage_bucket": "chateoeela.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773659845874:android:5b2a4ab94dd1b8c167dc6b",
+        "android_client_info": {
+          "package_name": "com.example.chateo_eela_2025"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwrUa2kNXzWwPLDXwTP77Hd3n2unJxad8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

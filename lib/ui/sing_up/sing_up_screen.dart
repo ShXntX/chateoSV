@@ -18,7 +18,7 @@ class SingUpScreen extends StatelessWidget {
     final cubit = context.read<SingUpCubit>();
 
     //un cotrolador de textos para validar que un campo coincida con otro
-    final passOriginal = TextEditingController();
+    //final passOriginal = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(title: Text("")),
@@ -71,6 +71,7 @@ class SingUpScreen extends StatelessWidget {
                     border: UnderlineInputBorder(),
                     labelText: 'Your name',
                   ),
+                  validator: EmailValidator.validatorName,
                   //aqui llamo al cubit
                   onChanged: cubit.onNameChanged,
                 ),
@@ -91,7 +92,7 @@ class SingUpScreen extends StatelessWidget {
                 ),
                 TextFormField(
                   //agrego el controlador declarado arriba
-                  controller: passOriginal,
+                  //controller: passOriginal,
                   textInputAction: TextInputAction.done,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
@@ -102,18 +103,25 @@ class SingUpScreen extends StatelessWidget {
                   //valida un Pass valido
                   validator: EmailValidator.validatorPass,
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Confirm Password',
-                  ),
-                  //aqui llamo al cubit
-                  onChanged: cubit.onConfPassChanged,
-                  //esta validador se declaro de esta manera ya no recibe un parametro
-                  validator: (value) => EmailValidator.validatorPassConfirm(
-                    value,
-                    passOriginal.text,
-                  ),
+                BlocBuilder<SingUpCubit, SingUpState>(
+                  builder: (context, state) {
+                    return TextFormField(
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Confirm Password',
+                      ),
+                      //aqui llamo al cubit
+                      onChanged: cubit.onConfPassChanged,
+                      forceErrorText: state.passwordMatch
+                          ? null
+                          : 'Contrasenia no coincide',
+                      //esta validador se declaro de esta manera ya no recibe un parametro
+                      // validator: (value) => EmailValidator.validatorPassConfirm(
+                      //   value,
+                      //   passOriginal.text,
+                      // ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -125,7 +133,10 @@ class SingUpScreen extends StatelessWidget {
 
         child: FilledButton(
           onPressed: () {
-            formKey.currentState!.validate();
+            final isValid = formKey.currentState?.validate() ?? false;
+            if (isValid) {
+              cubit.createAccount();
+            }
           },
           style: FilledButton.styleFrom(),
           child: const Text('Create account-uihut'),
