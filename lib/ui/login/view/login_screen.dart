@@ -3,6 +3,7 @@ import 'package:chateo_eela_2025/ui/login/cubit/login_cubit.dart';
 import 'package:chateo_eela_2025/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -21,170 +22,202 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(title: Text("")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          //esta llave es para tener un validador del formulario
-          key: formKey,
-          // es un formulario
-          child: SingleChildScrollView(
-            child: Column(
-              spacing: 24,
-              children: [
-                Text.rich(
-                  TextSpan(
+        child: BlocListener<LoginCubit, LoginState>(
+          listenWhen: (previous, current) {
+            return previous.status != current.status;
+          },
+
+          listener: (context, state) {
+            // TODO: implement listener
+            if (state.status == Status.susses) {
+              Fluttertoast.showToast(msg: 'Muuuy Bien');
+            } else if (state.status == Status.userNotFound) {
+              Fluttertoast.showToast(msg: 'Usuario no encontrado');
+            } else if (state.status == Status.wrongPassword) {
+              Fluttertoast.showToast(msg: 'Contasenia incorrecta');
+            } else if (state.status == Status.invalidCredential) {
+              Fluttertoast.showToast(msg: 'Credenciales Invalidas');
+            } else if (state.status == Status.failed) {
+              Fluttertoast.showToast(
+                msg: 'Algo salió mal. Intenta nuevamente ...',
+              );
+            }
+          },
+          child: Form(
+            //esta llave es para tener un validador del formulario
+            key: formKey,
+            // es un formulario
+            child: SingleChildScrollView(
+              child: Column(
+                spacing: 24,
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Log in',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: AppColors.primary,
+                            decorationThickness: 4.0,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        const TextSpan(
+                          text: ' to Chatbox',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text.rich(
+                    textAlign: TextAlign.center,
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              'Welcome back! Sign in using your social account or email to continue us',
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextSpan(
-                        text: 'Log in',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationColor: AppColors.primary,
-                          decorationThickness: 4.0,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w900,
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.transparent, // o cualquier color de fondo
+                          border: Border.all(
+                            color: AppColors.black,
+                            width: 2,
+                          ), // borde blanco
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // esquinas redondeadas
+                        ),
+
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/icons/facebook.png'),
                         ),
                       ),
-                      const TextSpan(
-                        text: ' to Chatbox',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w900,
+                      SizedBox(width: 20),
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.transparent, // o cualquier color de fondo
+                          border: Border.all(
+                            color: AppColors.black,
+                            width: 2,
+                          ), // borde blanco
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // esquinas redondeadas
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/icons/google.png'),
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Container(
+                        width: 55, // ancho en píxeles
+                        height: 55,
+                        decoration: BoxDecoration(
+                          color:
+                              Colors.transparent, // o cualquier color de fondo
+                          border: Border.all(
+                            color: AppColors.black,
+                            width: 2,
+                          ), // borde blanco
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // esquinas redondeadas
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset('assets/icons/appleDark.png'),
                         ),
                       ),
                     ],
                   ),
-                ),
-                Text.rich(
-                  textAlign: TextAlign.center,
-                  TextSpan(
+                  Row(
                     children: [
-                      TextSpan(
-                        text:
-                            'Welcome back! Sign in using your social account or email to continue us',
+                      Expanded(
+                        child: Divider(color: AppColors.grey, thickness: 0.5),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          'OR',
+                          style: TextStyle(color: Colors.black, fontSize: 14),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(color: AppColors.grey, thickness: 0.5),
                       ),
                     ],
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.transparent, // o cualquier color de fondo
-                        border: Border.all(
-                          color: AppColors.black,
-                          width: 2,
-                        ), // borde blanco
-                        borderRadius: BorderRadius.circular(
-                          100,
-                        ), // esquinas redondeadas
-                      ),
+                  TextFormField(
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Your email',
+                    ),
+                    //llamo a la funcion declarada en el otro archivo
+                    validator: EmailValidator.validatorEmail,
 
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/icons/facebook.png'),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.transparent, // o cualquier color de fondo
-                        border: Border.all(
-                          color: AppColors.black,
-                          width: 2,
-                        ), // borde blanco
-                        borderRadius: BorderRadius.circular(
-                          100,
-                        ), // esquinas redondeadas
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/icons/google.png'),
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    Container(
-                      width: 55, // ancho en píxeles
-                      height: 55,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent, // o cualquier color de fondo
-                        border: Border.all(
-                          color: AppColors.black,
-                          width: 2,
-                        ), // borde blanco
-                        borderRadius: BorderRadius.circular(
-                          100,
-                        ), // esquinas redondeadas
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('assets/icons/appleDark.png'),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(color: AppColors.grey, thickness: 0.5),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(
-                        'OR',
-                        style: TextStyle(color: Colors.black, fontSize: 14),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(color: AppColors.grey, thickness: 0.5),
-                    ),
-                  ],
-                ),
-                TextFormField(
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Your email',
+                    //lamo al cubit
+                    onChanged: cubit.onEmailChanged,
                   ),
-                  //llamo a la funcion declarada en el otro archivo
-                  validator: EmailValidator.validatorEmail,
+                  TextFormField(
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.next,
+                    // estilo de teclado
+                    //para que no se vea lo que se escribe
+                    obscureText: true,
+                    //keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      border: UnderlineInputBorder(),
+                      labelText: 'Password',
+                    ),
 
-                  //lamo al cubit
-                  onChanged: cubit.onEmailChanged,
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
-                  textInputAction: TextInputAction.next,
-                  // estilo de teclado
-                  //para que no se vea lo que se escribe
-                  obscureText: true,
-                  //keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    border: UnderlineInputBorder(),
-                    labelText: 'Password',
+                    //llamo al metodo que valida mi contraseña
+                    validator: EmailValidator.validatorPass,
+
+                    //lamo al cubit
+                    onChanged: cubit.onPassChanged,
                   ),
-
-                  //llamo al metodo que valida mi contraseña
-                  validator: EmailValidator.validatorPass,
-
-                  //lamo al cubit
-                  onChanged: cubit.onPassChanged,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: FilledButton(
-          onPressed: () {
-            //formKey.currentState!.validate();
-            final isValid = formKey.currentState?.validate() ?? false;
-            if (isValid) {
-              cubit.logeado();
-            }
+        child: BlocBuilder<LoginCubit, LoginState>(
+          builder: (context, state) {
+            return FilledButton(
+              onPressed: (state.status == Status.loading)
+                  ? null
+                  : () {
+                      //formKey.currentState!.validate();
+                      final isValid = formKey.currentState?.validate() ?? false;
+                      if (isValid) {
+                        cubit.logeado();
+                      }
+                    },
+
+              child: const Text('Log in'),
+            );
           },
-          child: const Text('Log in'),
         ),
       ),
     );

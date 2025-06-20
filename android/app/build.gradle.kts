@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.example.chateo_eela_2025"
-	compileSdk = 34
+	compileSdk = 35
     //compileSdk = flutter.compileSdkVersion
     //ndkVersion = flutter.ndkVersion
 	ndkVersion = "27.0.12077973"
