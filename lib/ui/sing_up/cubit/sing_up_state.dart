@@ -1,11 +1,22 @@
 part of 'sing_up_cubit.dart';
 
+//manejador de errores
+enum Status {
+  initail,
+  loading,
+  passwordTooWeek,
+  emailAlreadyReistered,
+  susses,
+  failed,
+  passwordMismatch,
+}
+
 final class SingUpState {
   final String? name;
   final String? email;
   final String? password;
   final String? confirmPassword;
-  final bool passwordMatch;
+  final Status? status;
 
   //Un constructor
 
@@ -14,7 +25,7 @@ final class SingUpState {
     this.email,
     this.password,
     this.confirmPassword,
-    this.passwordMatch = true,
+    this.status = Status.initail,
   });
 
   //metodo que crea copias de una claase
@@ -24,14 +35,13 @@ final class SingUpState {
     String? email,
     String? password,
     String? confirmPassword,
-    bool? passwordMatch,
+    Status? status,
   }) {
     return SingUpState(
       name: name ?? this.name,
       email: email ?? this.email,
       password: password ?? this.password,
-      confirmPassword: confirmPassword ?? this.confirmPassword,
-      passwordMatch: passwordMatch ?? this.passwordMatch,
+      status: status ?? this.status,
     );
   }
 }

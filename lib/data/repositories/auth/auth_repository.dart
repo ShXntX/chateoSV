@@ -5,4 +5,5 @@ abstract class AuthRepository {
   //login
 
   //login con google
+  Future<void> signInWithGoogle();
 }

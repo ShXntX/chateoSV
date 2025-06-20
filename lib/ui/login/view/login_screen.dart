@@ -1,6 +1,8 @@
 import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
+import 'package:chateo_eela_2025/ui/login/cubit/login_cubit.dart';
 import 'package:chateo_eela_2025/utils/validators.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -11,6 +13,9 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //esta llave es para tener un validador del formulario
     final formKey = GlobalKey<FormState>();
+
+    //llamo al cubit.
+    final cubit = context.read<LoginCubit>();
 
     return Scaffold(
       appBar: AppBar(title: Text("")),
@@ -142,6 +147,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                   //llamo a la funcion declarada en el otro archivo
                   validator: EmailValidator.validatorEmail,
+
+                  //lamo al cubit
+                  onChanged: cubit.onEmailChanged,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.visiblePassword,
@@ -157,6 +165,9 @@ class LoginScreen extends StatelessWidget {
 
                   //llamo al metodo que valida mi contraseña
                   validator: EmailValidator.validatorPass,
+
+                  //lamo al cubit
+                  onChanged: cubit.onPassChanged,
                 ),
               ],
             ),
@@ -167,7 +178,11 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: FilledButton(
           onPressed: () {
-            formKey.currentState!.validate();
+            //formKey.currentState!.validate();
+            final isValid = formKey.currentState?.validate() ?? false;
+            if (isValid) {
+              cubit.logeado();
+            }
           },
           child: const Text('Log in'),
         ),
