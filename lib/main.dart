@@ -1,6 +1,8 @@
 //mateApp
 //Mi primer proyecto jejjeje
 import 'package:chateo_eela_2025/firebase_options.dart';
+import 'package:chateo_eela_2025/ui/chat_screens/home/home_chat_screen.dart';
+import 'package:chateo_eela_2025/ui/chat_screens/profile/proflie_screen.dart';
 import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
 import 'package:chateo_eela_2025/ui/core/themes/theme.dart';
 import 'package:chateo_eela_2025/ui/login/cubit/login_cubit.dart';
@@ -48,6 +50,9 @@ class MyApp extends StatelessWidget {
           create: (context) => SingUpCubit(),
           child: SingUpScreen(),
         ),
+
+        AppNavigator.chatHomeScfreen: (_) => HomeChatScreen(),
+        AppNavigator.profileScreen: (_) => ProflieScreen(),
       },
 
       //asi llamo a la clase que tieme mis temna o mis colores theme.dart
