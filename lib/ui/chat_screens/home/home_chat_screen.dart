@@ -1,3 +1,4 @@
+import 'package:chateo_eela_2025/ui/chat_screens/profile/proflie_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeChatScreen extends StatelessWidget {
@@ -101,6 +102,14 @@ class HomeChatScreen extends StatelessWidget {
                                 color: Colors.red,
                                 size: 12,
                               ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => ProflieScreen(),
+                                  ),
+                                );
+                              },
                             );
                           },
                         ),

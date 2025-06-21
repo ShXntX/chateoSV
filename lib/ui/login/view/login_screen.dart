@@ -1,3 +1,4 @@
+import 'package:chateo_eela_2025/ui/chat_screens/home/home_chat_screen.dart';
 import 'package:chateo_eela_2025/ui/core/ui/colors.dart';
 import 'package:chateo_eela_2025/ui/login/cubit/login_cubit.dart';
 import 'package:chateo_eela_2025/utils/validators.dart';
@@ -212,6 +213,10 @@ class LoginScreen extends StatelessWidget {
                       final isValid = formKey.currentState?.validate() ?? false;
                       if (isValid) {
                         cubit.logeado();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => HomeChatScreen()),
+                        );
                       }
                     },
 

@@ -139,11 +139,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         //Navigator.pushNamed(context, SingUpScreen.routName);
-                        //Navigator.pushNamed(context, AppNavigator.signUp);
-                        Navigator.pushNamed(
-                          context,
-                          AppNavigator.profileScreen,
-                        );
+                        Navigator.pushNamed(context, AppNavigator.signUp);
                       },
                       child: const Text('Sign up with mail'),
                     ),
@@ -151,11 +147,7 @@ class HomeScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       //Navigator.pushNamed(context, LoginScreen.routName);
-                      //Navigator.pushNamed(context, AppNavigator.login);
-                      Navigator.pushNamed(
-                        context,
-                        AppNavigator.chatHomeScfreen,
-                      );
+                      Navigator.pushNamed(context, AppNavigator.login);
                     },
                     child: const Text(
                       'Existing account? Log in',
