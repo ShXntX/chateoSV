@@ -39,4 +39,9 @@ class AuthRepositoryImpl extends AuthRepository {
       password: password,
     );
   }
+
+  @override
+  Stream<User?> get currentUser {
+    return FirebaseAuth.instance.authStateChanges();
+  }
 }

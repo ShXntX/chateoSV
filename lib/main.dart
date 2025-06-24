@@ -7,6 +7,7 @@ import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
 import 'package:chateo_eela_2025/ui/core/themes/theme.dart';
 import 'package:chateo_eela_2025/ui/login/cubit/login_cubit.dart';
 import 'package:chateo_eela_2025/ui/login/view/login_screen.dart';
+import 'package:chateo_eela_2025/ui/onboarding/cubit/onboarding_cubit.dart';
 import 'package:chateo_eela_2025/ui/onboarding/home_screen.dart';
 import 'package:chateo_eela_2025/ui/sing_up/cubit/sing_up_cubit.dart';
 import 'package:chateo_eela_2025/ui/sing_up/sing_up_screen.dart';
@@ -38,7 +39,10 @@ class MyApp extends StatelessWidget {
       // },
       routes: {
         // reemplaza al home
-        AppNavigator.main: (_) => HomeScreen(),
+        AppNavigator.main: (_) => BlocProvider(
+          create: (context) => OnboardingCubit(),
+          child: HomeScreen(),
+        ),
 
         AppNavigator.login: (_) => BlocProvider(
           create: (context) => LoginCubit(),

@@ -1,5 +1,7 @@
 import 'package:chateo_eela_2025/ui/core/navigation/app_navigator.dart';
+import 'package:chateo_eela_2025/ui/onboarding/cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -78,7 +80,10 @@ class HomeScreen extends StatelessWidget {
                           ), // esquinas redondeadas
                         ),
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            //llamo al inicio de google
+                            context.read<OnboardingCubit>().signInWithGoogle();
+                          },
                           icon: Image.asset('assets/icons/google.png'),
                         ),
                       ),

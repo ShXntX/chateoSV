@@ -12,7 +12,20 @@
           "package_name": "com.example.chateo_eela_2025"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "773659845874-ge5rtpmuhh1vqjb77e7qt8l4e6h71cu4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chateo_eela_2025",
+            "certificate_hash": "02506d59d2444d7a4d269653d064c558cdfb2b1a"
+          }
+        },
+        {
+          "client_id": "773659845874-a8sg351e6oihl20qclg3e2c7p72hmkq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCwrUa2kNXzWwPLDXwTP77Hd3n2unJxad8"
@@ -20,7 +33,55 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773659845874-a8sg351e6oihl20qclg3e2c7p72hmkq7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "773659845874-qseumc2v25v5ns5vtvc78glu8tul8o7m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chateoEela2025"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773659845874:android:463adf815809fe6467dc6b",
+        "android_client_info": {
+          "package_name": "com.example.gps_sv_eela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773659845874-a8sg351e6oihl20qclg3e2c7p72hmkq7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwrUa2kNXzWwPLDXwTP77Hd3n2unJxad8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773659845874-a8sg351e6oihl20qclg3e2c7p72hmkq7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "773659845874-qseumc2v25v5ns5vtvc78glu8tul8o7m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chateoEela2025"
+              }
+            }
+          ]
         }
       }
     }

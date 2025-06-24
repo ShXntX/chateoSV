@@ -27,7 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
       switch (e.code) {
         case 'user-not-found':
           emit(state.copyWith(status: Status.userNotFound));
-          print('weak-password');
+          print('user-not-found');
           break;
         case 'wrong-password':
           print('wrong-password');
